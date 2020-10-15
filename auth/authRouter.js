@@ -33,6 +33,25 @@ router.post('/login', (req, res) => {
     })
 });
 
+router.patch('/:id', (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
+  Users.findById(id)
+    .then((scheme) => {
+      if (scheme) {
+        Users.update(changes, id)
+          .then((userinfo) => {
+            res.json(userinfo);
+          });
+      } else {
+        res.status(404).json({ message: 'unable to find user info with given id' });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
+
 function generateToken(user) {
   const payload = {
     subject: user.id,
