@@ -4,7 +4,7 @@ exports.up = function (knex) {
         .createTable('users', tbl => {
             tbl.increments();
             tbl.string('username', 128).notNullable().unique();
-            tbl.varchar('phone_number', 13);
+            tbl.integer('phone_number');
             tbl.varchar('password', 128).notNullable();
         })
         .createTable('plants', tbl => {
