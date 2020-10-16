@@ -5,6 +5,7 @@ module.exports = {
     update,
     remove,
     getplants,
+    findById,
 }
 
 function add(plantinfo) {
@@ -21,4 +22,8 @@ function remove(id) {
 
 function getplants() {
     return db('plants');
+}
+
+function findById(id) {
+    return db('plants').where({ id }).first();
 }
