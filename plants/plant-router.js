@@ -18,7 +18,7 @@ router.post('/:id', (req, res) => {
     });
 });
 
-router.get('/', (req, res) => {
+router.get('/', restricted, (req, res) => {
     Plants.get(req.query)
     .then((plants) => {
         res.status(200).json(plants)
