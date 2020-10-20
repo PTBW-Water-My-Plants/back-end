@@ -1,6 +1,7 @@
 const express = require("express");
 const helmet = require("helmet");
 const cors = require("cors");
+//const authenticate = require("../auth/restricted-middleware.js")
 
 
 const authRouter = require("../auth/auth-router.js");
@@ -17,6 +18,7 @@ server.use(cors());
 
 
 server.use("/api/auth", authRouter);
+//server.use('/api/plants',authenticate, plantRouter);
 server.use('/api/plants', plantRouter);
 
 
